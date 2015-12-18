@@ -37,10 +37,10 @@ const allTranslations = {
     'lang.en': 'English',
     'lang.sw-tz': 'Kiswahili',
 
-
-    'dash.waterpoints': 'Water Points',
-    'dash.waterpoint': 'A Water Point',
-
+    'dashboard.url': 'Click for the full dashboard',
+    'education.title': 'Education',
+    'health.title': 'Health',
+    'water.title': 'Water',
 
 
     'view-mode.points.waterpoints': 'All Waterpoints',

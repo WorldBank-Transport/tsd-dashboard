@@ -36,10 +36,10 @@
 }
 
 .home-header {
-  text-align: center;
   background-color: $grey-light;
-  padding-top: 1em;
   padding-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
 
   h3 {
     color: $grey-medium;
@@ -105,6 +105,24 @@
     font-size: $dashboard-description;
     @include up-to($tablet-landscape) {
       color: $text-inverse;
+    }
+  }
+
+  .buttons {
+    margin-left: 28em;
+  }
+
+  .all-dashboard {
+    width: 100%;
+
+  }
+  .minidash {
+    border: 1px solid $grey-medium;
+    display: inline-block;
+    margin-left: 1em;
+    width: 30%;
+    div {
+      display: table;
     }
   }
 }
