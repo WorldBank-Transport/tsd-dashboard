@@ -1,11 +1,9 @@
 /* eslint camelcase: 0 */  // snake_case query params are not set by us
-import throttle from 'lodash/function/throttle';
 import isUndefined from 'lodash/lang/isUndefined';
 import { Ok, Err } from 'results';
 import * as func from '../functional';
 import warn from '../warn';
 import { fetchAndCheck } from './http';
-import { toQuery } from './querystring';
 
 
 const converters = {
@@ -95,30 +93,6 @@ export function convertCkanResp(result) {
       func.Result.map(rec => convertRecord(fieldConverters, rec), records));
 }
 
-const resourceUrl = (root, query) =>
-  toQuery({...params, resource_id: id})
-    .orElse(err => {
-      warn(err);
-      return Err(['error.api.pre-request']);
-    })
-    .andThen(qs => Ok(`${root}/action/datastore_search?${qs}`))
-    .promise();
-
-/**
- * @param {number} chunkSize How big is each chunk allowed to be
- * @param {number} total How many rows there are to be chunked
- * @returns {array<number>} The offset of each chunk to fetch (not including
- * the first one, which we already fetched to find the total)
- */
-const getOffsets = (chunkSize, total) => {
-  const offsets = [];
-  const num = Math.ceil(total / chunkSize);
-  for (let i = 1; i < num; i++) {  // skip the first chunk (we already have it)
-    offsets.push(i * chunkSize);
-  }
-  return offsets;  //[];  // TODO: revert when ckan starts working again offsets;
-};
-
 const convertChunk = data => convertCkanResp(data).promise();
 
 /**
@@ -151,14 +125,13 @@ const promiseConcat = (postprocess, notify, ...promises) => new Promise((resolve
 
 /**
  * @param {string} root The CKAN API root
- * @param {string} id The resource's id
- * @param {object} query Any query to be applied
+ * @param {string} query Any query to be applied
  * @param {func} notify A callback to indicate progress
  * @param {func} postprocess A callback to run on the incoming data
  * @returns {Promise<array<object>>} The converted data
  */
 function get(root, query, notify = () => null, postprocess = v => v) {
-  const get = () => {
+  const getData = () => {
     return fetchAndCheck(root + query)
       .then(resp => resp.json())
       .then(rejectIfNotSuccess);
@@ -169,7 +142,7 @@ function get(root, query, notify = () => null, postprocess = v => v) {
     return promiseConcat(postprocess, notify, first);
   };
 
-  return get().then(parse);
+  return getData().then(parse);
 }
 
 

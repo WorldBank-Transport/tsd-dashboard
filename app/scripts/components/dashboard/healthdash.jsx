@@ -23,7 +23,6 @@ const HealthDash = React.createClass({
         <div className="healthdash">
           <h4><T k="health.metric.title" /></h4>
           <h2>{this.state.data[0].count}</h2>
-          
         </div>
       );
     } else {
