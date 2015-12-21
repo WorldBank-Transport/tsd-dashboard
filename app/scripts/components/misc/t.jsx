@@ -24,6 +24,7 @@ const allTranslations = {
     'home.water': 'Water',
     'home.button.open-data': 'Visit the Open Data Portal',
     'home.button.brn': 'Learn more about BRN',
+    'home.target': 'Target',
 
     'nav.home': 'Home',
     'nav.data': 'Data',
@@ -39,9 +40,11 @@ const allTranslations = {
 
     'dashboard.url': 'Click for the full dashboard',
     'education.title': 'Education',
+    'education.metric.title': 'Primary School Pass Rate',
     'health.title': 'Health',
+    'health.metric.title': 'Rated Health Care Facilities',
     'water.title': 'Water',
-
+    'waterdash.metric.title': 'Percent Population Coverage',
 
     'view-mode.points.waterpoints': 'All Waterpoints',
     'view-mode.points.dams': 'All Dams',

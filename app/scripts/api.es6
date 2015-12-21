@@ -3,7 +3,7 @@
 import ckan from './utils/api/ckan';
 import * as staticData from './utils/api/static-data';
 
-const API_ROOT = '//data.takwimu.org/api';
+const API_ROOT = '//data.takwimu.org/api/action/datastore_search_sql?sql=';
 
 
 /**
@@ -68,85 +68,18 @@ function toUppercase(record) {
 const eachRecord = fn => data => data.map(fn);
 
 
-const healthFacilitiesQ = {
-  fields: [
-    'FACILITY_ID_NUMBER',
-    'FACILITY_NAME',
-    'LATITUDE',
-    'LONGITUDE',
-    'ZONE',
-    'REGION',
-    'COUNCIL',
-    'COMMON FACILITY HEALTH NAME',
-    'FACILITY TYPE',
-    'OWNERSHIP',
-    'OPERATING_STATUS',
-  ],
-  distinct: true,
-};
+const healthFacilitiesQ = 'SELECT COUNT(*) from "b3ef3486-34fd-4389-bc61-af4520df1858"';
 
 export const getHealthFacilities = (onProgress) =>
-  ckan.get(API_ROOT, 'b3ef3486-34fd-4389-bc61-af4520df1858', healthFacilitiesQ,
-    onProgress, eachRecord(healthFacProcess));
+  ckan.get(API_ROOT, healthFacilitiesQ, onProgress);
 
 
-const boreholesQ = {
-  fields: [
-    'REGION',
-    'DISTRICT',
-    'LOCATION',
-    'BOREHOLE_NO',
-    'DIAMETER',
-    'DEPTH_METER',
-    'STATIC_WATER_LEVEL',
-    'DYNAMIC_WATER_LEVEL_METER',
-    'DRAW _DOWN_METER',
-    'YIELD_METER_CUBED_PER_HOUR',
-    'ELECTRICAL_CONDUCTIVITY',
-    'CONSULTANT',
-    'YEAR_FROM',
-    'YEAR_TO',
-  ],
-};
+const educationQ = 'SELECT AVG("PASS_RATE"), "YEAR_OF_RESULT" FROM "aba0d668-5693-4979-83fc-f58df99f7873" GROUP BY "YEAR_OF_RESULT" ORDER BY "YEAR_OF_RESULT" DESC LIMIT 1';
 
-export const getBoreholes = (onProgress) =>
-  ckan.get(API_ROOT, 'c9843a61-eca6-47bb-971d-70bf9c0fe942', boreholesQ, onProgress);
+export const getEducation = (onProgress) =>
+  ckan.get(API_ROOT, educationQ, onProgress);
 
-const damsQ = {
-  fields: [
-    'REGION',
-    'DISTRICT',
-    'DAM_NAME',
-    'BASIN',
-    'DAM_HEIGHT',
-    'ELEVATION_',
-    'RESERVOIR_',
-    'LONGITUDE',
-    'LATITUDE',
-  ],
-};
+const waterQ = 'SELECT SUM("POPULATION_NUMBER_PER_URBAN_WATER_UTILTY") as POPULATION, SUM("POPULATION_SERVED_WITH_WATER") AS SERVED from "e99544de-ee22-4820-92d7-1aa214682bde"';
 
-export const getDams = (onProgress) =>
-  ckan.get(API_ROOT, '5da4eb70-47a0-4694-b735-397bb3732b99', damsQ, onProgress, eachRecord(damProcess));
-
-const populationQ = {
-  fields: [
-    'REGION',
-    'DISTRICT',
-    'WARD',
-    'VILLAGE',
-    'TOTAL',
-  ],
-};
-
-export const getPopulation = (onProgress) =>
-  ckan.get(API_ROOT, 'ab84afa2-0afa-411e-9630-aeddc7bccb03', populationQ, onProgress, eachRecord(toUppercase));
-
-export const getRegions = () =>
-  staticData.getPolygons('/layers/tz_regions.json', 'tz_Regions');
-
-export const getDistricts = () =>
-  staticData.getPolygons('/layers/tz_districts.json', 'tz_districts');
-
-export const getWards = () =>
-  staticData.getPolygons('/layers/tz_wards.json', 'TzWards');
+export const getWaterStats = (onProgress) =>
+  ckan.get(API_ROOT, waterQ, onProgress);

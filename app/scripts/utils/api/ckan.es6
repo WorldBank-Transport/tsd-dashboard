@@ -12,6 +12,7 @@ const converters = {
   text: t => t,
   numeric: n => parseFloat(n),
   int4: n => parseInt(n, 10),
+  int8: n => parseInt(n, 10),
 };
 
 /**
@@ -94,7 +95,7 @@ export function convertCkanResp(result) {
       func.Result.map(rec => convertRecord(fieldConverters, rec), records));
 }
 
-const resourceUrl = (root, id, params = {}) =>
+const resourceUrl = (root, query) =>
   toQuery({...params, resource_id: id})
     .orElse(err => {
       warn(err);
@@ -156,31 +157,19 @@ const promiseConcat = (postprocess, notify, ...promises) => new Promise((resolve
  * @param {func} postprocess A callback to run on the incoming data
  * @returns {Promise<array<object>>} The converted data
  */
-function get(root, id, query = {}, notify = () => null, postprocess = v => v) {
-  const chunk = 6000;
-  const throttledNotify = throttle(notify, 1000, {leading: true, trailing: false});
-
-  const getChunk = (offset) => {
-    return resourceUrl(root, id, {...query, limit: chunk, offset: offset})
-      .then(fetchAndCheck)
+function get(root, query, notify = () => null, postprocess = v => v) {
+  const get = () => {
+    return fetchAndCheck(root + query)
       .then(resp => resp.json())
       .then(rejectIfNotSuccess);
   };
 
-  const getTheRest = (firstResp) => {
-    const { total } = firstResp.result;
+  const parse = (firstResp) => {
     const first = convertChunk(firstResp);
-    if (total <= chunk) {
-      return promiseConcat(postprocess, throttledNotify, first);  // we have it all
-    } else {
-      const chunkPromises = getOffsets(chunk, total)
-        .map(offset => getChunk(offset).then(convertChunk));
-      return promiseConcat(postprocess, throttledNotify, first, ...chunkPromises);
-    }
+    return promiseConcat(postprocess, notify, first);
   };
 
-  return getChunk(0)
-    .then(getTheRest);
+  return get().then(parse);
 }
 
 

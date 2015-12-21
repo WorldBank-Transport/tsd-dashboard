@@ -9,6 +9,11 @@ import WaterDash from '../dashboard/waterdash';
 require('stylesheets/boilerplate/static-content');
 
 const Homepage = React.createClass({
+
+  componentDidMount() {
+
+  },
+
   render() {
     return (
       <div className="home-page">

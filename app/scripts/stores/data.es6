@@ -1,7 +1,7 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
-import { load, loadProgress, loadCompleted, loadFailed } from '../actions/data';
-import { getHealthFacilities } from '../api';
+import { loadW, loadProgressW, loadCompletedW, loadFailedW } from '../actions/data';
+import { getHealthFacilities, getEducation, getWaterStats } from '../api';
 
 const DUMMY = [];
 
@@ -19,13 +19,14 @@ const getNextProxier = (type) => {
 
 const DataStore = createStore({
   initialData: {
-    facilities: DUMMY,
+    education: DUMMY,
+    water: DUMMY,
+    health: DUMMY,
   },
   mixins: [SaneStore],
   init() {
-    this.listenTo(load, 'loadIfNeeded');
-    this.listenTo(loadProgress, 'loadData');
-    this.listenTo(loadCompleted, 'loadData');
+    this.listenTo(loadW, 'loadIfNeeded');
+    this.listenTo(loadCompletedW, 'loadData');
   },
   loadIfNeeded(type) {
     if (this.get()[type] === DUMMY) {
@@ -35,6 +36,7 @@ const DataStore = createStore({
     }
   },
   loadData(data, type) {
+    debugger;
     const tmp = {
       ...this.get(),
       [type]: data,
@@ -46,11 +48,23 @@ const DataStore = createStore({
   },
 
   getDataFromApi(type) {
+    debugger;
     const proxier = getNextProxier(type);
-    const apiFn = getHealthFacilities;
-    apiFn(proxier(loadProgress))
-      .then(proxier(loadCompleted))
-      .catch(proxier(loadFailed));
+    let apiFn;
+    switch (type) {
+    case 'education': 
+      apiFn = getEducation;
+      break;
+    case 'water': 
+      apiFn = getWaterStats;
+      break;
+    case 'health': 
+      apiFn = getHealthFacilities;
+      break;
+    }
+    apiFn(proxier(loadProgressW))
+      .then(proxier(loadCompletedW))
+      .catch(proxier(loadFailedW));
   },
 });
 
