@@ -1,7 +1,7 @@
 {
-  "name": "tanzania-health-dashboard",
+  "name": "tanzania-dashboards",
   "version": "0.0.0",
-  "description": "Health Dashboard",
+  "description": "Tanzania Dashboards",
   "license": "GPL-3.0",
   "main": "server.js",
   "scripts": {
