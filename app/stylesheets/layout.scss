@@ -6,6 +6,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
   @include up-to($tablet-landscape) {
     overflow-x: hidden;
   }
@@ -13,14 +14,11 @@ body {
 
 .header {
   height: $header-height;
+  position: relative;
 }
 
 .main {
-  bottom: $footer-height;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: $header-height+5;
+  min-height: 100%;
 
   @include up-to($tablet-portrait) {
     height: 100%;
@@ -34,10 +32,6 @@ body {
     display: none;
   }
 
-  bottom: 0;
   height: $footer-height;
-  left: 0;
   overflow-y: auto;
-  position: absolute;
-  right: 0;
 }

@@ -12,7 +12,7 @@ const allTranslations = {
     'site-name': 'Open Data Dashboards',
     'site.flag': 'Flag of Tanzania',
 
-    'home.header': 'Big Result Now',
+    'home.header': 'Big Results Now',
     'home.title': 'Open Data Dashboards',
     'home.text.p1': 'These dashboards visualize key performance indicators using data pulled directly from Tanzania\'s Open Portal.',
     'home.text.p2': 'The code for these tools is release under an open source license to encourage others to repurpose it using different data and visialization.',

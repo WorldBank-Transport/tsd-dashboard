@@ -1,6 +1,7 @@
 $base-unit: 1em;
 
 // widths and heights
+$full-width: 100%;
 
 // header
 $dash-title-width-mobile: 60px;
@@ -30,6 +31,7 @@ $view-charts-icon-margin: 10px;
 $general-content-padding: 30px;
 $homecontent-margin: 40px;
 $homecontent-padding: 20px;
+$homecontent-centered: 50%;
 
 // footer
 $copy-width-large: 680px;
@@ -63,7 +65,6 @@ $metric-stat-height: 310px;
 // static content
 $static-content-position: 70px;
 $static-content-width: 80%;
-$home-content-width: 90%;
 
 // margins and padding
 $logo-top-position: 18px;
@@ -135,6 +136,9 @@ $grabby-height: 11px;
 $grabby-width: 2px;
 $grabby-center-off: 2px;
 
+$minidash-laptop-width: 1170px;
+$minidash-under-laptop-width: 992px;
+
 // screen sizes
 $phone: 480px;
 $tablet-portrait: 768px;
@@ -162,6 +166,12 @@ $laptop: 1280px;
 
 @mixin up-to($laptop) {
   @media (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin up-from($laptop) {
+  @media (min-width: $laptop) {
     @content;
   }
 }

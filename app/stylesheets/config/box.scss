@@ -28,6 +28,7 @@
   border-color: $bordercolor;
   border-width: $borderwidth;
 }
+
 @mixin waterpoints-tooltip-stats($top , $left) {
   left: $left;
   top: $top;

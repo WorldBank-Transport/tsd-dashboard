@@ -44,7 +44,8 @@ ul.open-data-nav {
 
 // the same nav in footer
 .footer-nav {
-  @include up-to($phone) {
+
+  @include up-to($tablet-alt) {
     display: none;
   }
 
@@ -52,12 +53,6 @@ ul.open-data-nav {
   margin: $footer-text-top-position 0;
 
   ul.open-data-nav {
-    @include up-to($tablet-landscape) {
-      left: $header-mobile-space;
-      position: absolute;
-      top: $header-mobile-space;
-    }
-
     li {
       @include up-to($tablet-alt) {
         padding-left: $nav-padding;
