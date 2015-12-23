@@ -16,17 +16,19 @@ const MiniDash = React.createClass({
     return (
       <div className="minidash">
         <div className="homebanner">
+          <h2><T k={`${this.props.type}.title`} /></h2>
           <img src={`images/${this.props.image}`}/>
         </div>
-        <h2><T k={`${this.props.type}.title`} /></h2>
         <div className="content">
           <div className="stats">
             {this.props.children}
           </div>
-          <a href={this.props.url}>
-            <T k="dashboard.url" />
-          </a>
-          <p>{this.props.url}</p>
+          <p>
+            <a href={this.props.url}>
+              <T k="dashboard.url" />
+            </a>
+            {this.props.url}
+          </p>
         </div>
       </div>
     );

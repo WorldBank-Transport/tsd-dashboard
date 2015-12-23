@@ -23,6 +23,8 @@ const HealthDash = React.createClass({
         <div className="healthdash">
           <h4><T k="health.metric.title" /></h4>
           <h2>{this.state.data[0].count}</h2>
+          <p>{this.state.data[0].YEAR_OF_RESULT} <T k="home.target" /></p>
+          <div className="target-stat">6000</div>
         </div>
       );
     } else {

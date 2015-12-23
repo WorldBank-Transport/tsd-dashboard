@@ -6,125 +6,248 @@
 
 // homepage
 .homebanner {
-  @include up-to($tablet-landscape) {
-    min-width: 100%;
-    position: absolute;
-}
-
-  float: left;
-  height: 100%;
-  max-width: 50%;
-  overflow: hidden;
-}
-
-.homebanner img {
-  display: block;
-  height: 100%;
-  width: auto;
-
-  @include up-to($tablet-landscape) {
-    height: auto;
-    min-height: 100%;
-    width: auto;
-}
-
-  @include up-to($tablet-portrait) {
-    height: 100%;
-    min-height: 100%;
+  img {
+    @include bottom-stat-border(3px, $grey-light);
+    width: $full-width;
   }
-
 }
 
 .home-header {
   background-color: $grey-light;
-  padding-bottom: 1em;
-  padding-top: 1em;
+  padding-bottom: $base-unit;
+  padding-top: $base-unit;
   text-align: center;
 
   h3 {
-    color: $grey-medium;
-    text-transform: capitalize;
+    color: $text-color;
+    font-size: $dash-intro-title;
+    margin-bottom: 0;
+    text-transform: uppercase;
   }
 
   h2 {
     color: $theme-blue;
+    font-size: $dash-page-title;
+    font-weight: $medium-font-weight;
+    margin-top: 0;
     text-transform: capitalize;
   }
+  .text-section {
+    -moz-transform: translateX(30%);
+    -ms-transform: translateX(30%);
+    -o-transform: translateX(30%);
+    transform: translateX(30%);
+    webkit-transform: translateX(30%);
+    width: 63%;
 
-  p {
-    color: $grey-medium;
-    font-size: 12px;
-    font-weight: $static-content-weight;
-    margin-left: 30em;
-    text-align: left;
-  }
+    @include up-from($laptop) {
+      margin-left: auto;
+      margin-right: auto;
+      transform: none;
+      width: 800px;
+    }
+
+    p {
+      color: $grey-medium;
+      font-size: $medium-text;
+      font-weight: $medium-font-weight;
+      text-align: left;
+    }
+}
+
 }
 
 .homecontent  {
   float: left;
-  margin-left: $homecontent-margin;
-  overflow: auto;
+  // margin-left:$homecontent-centered;
+  overflow: hidden;
   padding: $content-padding-vert;
-  width: $home-content-width;
-
-  @include up-to($tablet-landscape) {
-    background-color: $background-img-overlay;
-    height: 100%;
-    margin-left: 0;
-    overflow-y: auto;
-    padding: 0 $content-padding-horiz;
-    position: absolute;
-    width: auto;
-  }
+  position: relative;
+  width: $full-width;
 
   @include up-to($tablet-portrait) {
     padding: 0 $homecontent-padding;
   }
 
-  h2 {
-    color: $grey-medium;
-    font-size: $dashboard-intro;
-    font-weight: $static-content-weight;
-
-    @include up-to($tablet-landscape) {
-      color: $text-inverse;
-    }
-    @include up-to($tablet-portrait) {
-      font-size: $dashboard-intro-mobile;
-      font-weight: $title-weight;
-    }
-  }
-
   h5 {
     color: $grey-medium;
+    font-size: $medium-text;
+    font-weight: $medium-font-weight;
+    margin-bottom:  $base-unit / 2;
     text-align: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 
   p {
     font-size: $dashboard-description;
-    @include up-to($tablet-landscape) {
-      color: $text-inverse;
-    }
   }
 
   .buttons {
-    margin-left: 28em;
+    margin: 0 auto $base-unit auto;
+    overflow: hidden;
+    width: $full-width;
+
+    .button-col {
+      float: left;
+      width: $full-width/3;
+
+      @include up-from($laptop) {
+        width: $full-width / 2;
+      }
+
+      @include up-to($laptop) {
+        width: $full-width / 2;
+      }
+
+      @include up-to($tablet-alt) {
+        width: $full-width;
+      }
+
+      &.right {
+        .button {
+          float: left;
+          @include up-to($tablet-alt) {
+            float: none;
+          }
+        }
+      }
+
+      &.left {
+        .button {
+          float: right;
+          @include up-to($tablet-alt) {
+            float: none;
+          }
+        }
+      }
+    }
   }
 
   .all-dashboard {
-    width: 100%;
+    float: none;
+    width: $full-width;
+
+    .minidash-wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      overflow: hidden;
+
+      @include up-from($laptop) {
+        width: $minidash-laptop-width;
+      }
+
+      @include up-to($laptop) {
+        width: $minidash-under-laptop-width;
+      }
+
+      @include up-to($tablet-alt) {
+        width: $full-width;
+      }
+
+      @include up-to($tablet-portrait) {
+        width: $full-width;
+      }
+
+      .minidash {
+        border: 3px solid $grey-light;
+        float: left;
+        margin: 0 22px;
+        position: relative;
+        width: 28%;
+
+        @include up-to($tablet-landscape) {
+          width: 27%;
+        }
+
+        @include up-to($tablet-alt) {
+          margin: 0 20px;
+          width: 27%;
+        }
+
+        @include up-to($tablet-portrait) {
+          margin-bottom: $base-unit;
+          width: $full-width - 15;
+        }
+
+        @include up-to($phone) {
+          margin-bottom: $base-unit;
+          width: $full-width - 25;
+        }
+
+        h2 {
+          color: $text-inverse;
+          font-size: $dashboard-intro;
+          font-weight: $title-weight;
+          left: $general-content-padding /3;
+          margin: 0;
+          position: absolute;
+          text-align: center;
+          top: $general-content-padding / 6;
+        }
+
+        .content {
+          color: $grey-deep;
+          padding: $base-unit;
+          text-align: left;
+
+          .target-stat {
+            @include bottom-stat-border(3px, $grey-light);
+            color: $popup-stat-number;
+            font-size: $medium-number;
+            font-weight: $title-weight;
+            margin-bottom: $base-unit;
+            padding-bottom: $base-unit;
+          }
+
+          a {
+            color: $theme-blue;
+            display: block;
+
+            &:hover {
+              color: $grey-deep;
+            }
+
+          }
+
+          h4 {
+            margin: 0;
+            @include up-to($tablet-alt) {
+              font-size: 13px;
+            }
+          }
+
+          h2 {
+            font-size: $big-number;
+            font-weight: $title-weight;
+            left: 0;
+            margin: -12px 0 10px 0;
+            position: relative;
+            text-align: left;
+          }
+
+          .edudash h2 {
+            color: $status-medium;
+          }
+          .healthdash h2 {
+            color: $status-poor;
+          }
+          .waterdash h2 {
+            color: $status-medium;
+          }
+
+          p {
+            margin-bottom: 0;
+            @include up-to($tablet-alt) {
+              font-size: 14px;
+            }
+          }
+
+        }
+      }
+    }
 
   }
-  .minidash {
-    border: 1px solid $grey-medium;
-    display: inline-block;
-    margin-left: 1em;
-    width: 30%;
-    div {
-      display: table;
-    }
-  }
+
 }
 
 .static-content {
@@ -165,7 +288,7 @@
 
   iframe {
     border: 0;
-    height: 100%;
+    height: $full-width;
     left: 0;
     position: absolute;
     top: 0;
@@ -202,5 +325,4 @@
       }
     }
   }
-
 }
