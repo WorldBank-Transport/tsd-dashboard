@@ -32,7 +32,7 @@ const Homepage = React.createClass({
           <div className="all-dashboard">
             <div className="minidash-wrapper">
               <MiniDash image="edu-img.png" type="education" url="http://elimu.takwimu.org/"><EduDash /></MiniDash>
-              <MiniDash image="health-img.png" type="health" url="http://safya.takwimu.org"><HealthDash /></MiniDash>
+              <MiniDash image="health-img.png" type="health" url="http://afya.takwimu.org"><HealthDash /></MiniDash>
               <MiniDash image="water-img.png" type="water" url="http://maji.takwimu.org"><WaterDash /></MiniDash>
             </div>
           </div>
