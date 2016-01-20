@@ -31,9 +31,9 @@ const Homepage = React.createClass({
           <h5><T k="home.select" /></h5>
           <div className="all-dashboard">
             <div className="minidash-wrapper">
-              <MiniDash image="edu-img.png" type="education" url="www.elimu.takwimu.org"><EduDash /></MiniDash>
-              <MiniDash image="health-img.png" type="health" url="www.safya.takwimu.org"><HealthDash /></MiniDash>
-              <MiniDash image="water-img.png" type="water" url="www.maji.takwimu.org"><WaterDash /></MiniDash>
+              <MiniDash image="edu-img.png" type="education" url="http://elimu.takwimu.org/"><EduDash /></MiniDash>
+              <MiniDash image="health-img.png" type="health" url="http://safya.takwimu.org"><HealthDash /></MiniDash>
+              <MiniDash image="water-img.png" type="water" url="http://maji.takwimu.org"><WaterDash /></MiniDash>
             </div>
           </div>
           <div className="buttons">
