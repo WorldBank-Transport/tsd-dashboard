@@ -1,5 +1,4 @@
 import React from 'react';
-import OpenDataNav from './open-data-nav';
 import LanguageSelector from './language-selector';
 import Logo from './logo';
 
@@ -11,7 +10,6 @@ const Header = React.createClass({
       <div className="header">
         <Logo/>
         <div className="header-nav">
-          <OpenDataNav />
           <LanguageSelector />
         </div>
       </div>
