@@ -64,7 +64,7 @@ const allTranslations = {
 
     'overview-bar': 'Overview stuff',
 
-    'footer.copy': 'The content of this website is published under a CC BY NC SA 3.0 license, and the source code is published under a GPL 3.0 license. Visitors are encouraged to examine and re-use the code as long as they publish it under a similar license.',
+    'footer.copy': 'The source code of this website is published under a under a GPL 3.0 license. Visitors are encouraged to examine and re-use the code as long as they publish it under a similar license.',
 
     'loading': 'Loading',
     'loading.waterpoints': i => `${i[0]} waterpoints loaded...`,
@@ -97,6 +97,20 @@ const allTranslations = {
     'home.boreholes': 'Visima',
     'home.dams': 'Mabwawa',
 
+    'home.header': 'Big Results Now',
+    'home.title': 'Open Data Dashboards',
+    'home.text.p1': 'Dashibodi hizi zinaonyesha viashiria muhimu vya utendaji kwa kutumia Takwimu Huria zilizoainishwa na Serikali ya Tanzania; na kutantangazwa kwa tovuti kuu ya Serikali',
+    'home.text.p2': 'Programu ya dashibodi hii imechapichwa kwa njia inayosomeka na kompyuta ikitumia leseni inayohamasisha matumizi ili kuionyesha data na mitazamo tofauti.',
+    'home.text.p3': 'The dashboards are designed for citizens, journalist, and decisionmakers to track the country\'s Big Results Now progress in the education, health, and water sectors.',
+    'home.select': 'Choose a Sector:',
+    'home.other': 'OR:',
+    'home.health': 'Health',
+    'home.education': 'Education',
+    'home.water': 'Water',
+    'home.button.open-data': 'Visit the Open Data Portal',
+    'home.button.brn': 'Learn more about BRN',
+    'home.target': 'Target',
+
     'nav.home': 'Mwanzo',
     'nav.data': 'Data',
     'nav.speak-out': 'Maoni',
@@ -126,7 +140,7 @@ const allTranslations = {
 
     'overview-bar': 'Maelezo ya joomla',
 
-    'footer.copy': 'Tovuti hii imechapishwa kwa leseni ya CC BY NC SA 3.0. Programu imeandikwa na kuchapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
+    'footer.copy': 'Tovuti hii imechapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
 
     'loading': 'Loading',
     'loading.waterpoints': i => `${i[0]} waterpoints loaded...`,

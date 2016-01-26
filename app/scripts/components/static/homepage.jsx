@@ -23,7 +23,7 @@ const Homepage = React.createClass({
           <div className="text-section centered">
           <p><T k="home.text.p1" /></p>
           <p><T k="home.text.p2" /></p>
-          <p><T k="home.text.p2" /></p>
+          <p><T k="home.text.p3" /></p>
           </div>
 
         </div>
@@ -31,9 +31,9 @@ const Homepage = React.createClass({
           <h5><T k="home.select" /></h5>
           <div className="all-dashboard">
             <div className="minidash-wrapper">
-              <MiniDash image="edu-img.png" type="education" url="elimu.takwimu.org"><EduDash /></MiniDash>
-              <MiniDash image="health-img.png" type="health" url="safya.takwimu.org"><HealthDash /></MiniDash>
-              <MiniDash image="water-img.png" type="water" url="maji.takwimu.org"><WaterDash /></MiniDash>
+              <MiniDash image="edu-img.png" type="education" url="http://elimu.takwimu.org/"><EduDash /></MiniDash>
+              <MiniDash image="health-img.png" type="health" url="http://afya.takwimu.org"><HealthDash /></MiniDash>
+              <MiniDash image="water-img.png" type="water" url="http://maji.takwimu.org"><WaterDash /></MiniDash>
             </div>
           </div>
           <div className="buttons">
