@@ -24,7 +24,7 @@ const MiniDash = React.createClass({
             {this.props.children}
           </div>
           <p>
-            <a href={`http://${this.props.url}`}>
+            <a href={this.props.url}>
               <T k="dashboard.url" />
             </a>
             {this.props.url}
