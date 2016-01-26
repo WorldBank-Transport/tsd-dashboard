@@ -18,8 +18,7 @@
     "start": "node server.js",
     "test": "npm run test-only",
     "posttest": "npm run lint",
-    "test-only": "jest",
-    "init-database": "node init-database.js"
+    "test-only": "jest"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/jest-preprocessor.js",
@@ -88,6 +87,7 @@
     "es6-promise": "3.0.2",
     "express": "~4.0.0",
     "history": "1.12.5",
+    "isomorphic-fetch": "2.2.0",
     "leaflet": "0.7.5",
     "lodash": "3.10.1",
     "nedb": "^1.7.1",

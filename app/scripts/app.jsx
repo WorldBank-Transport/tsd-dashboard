@@ -11,11 +11,6 @@ import Homepage from './components/static/homepage';
 import Data from './components/static/data';
 import SpeakOut from './components/static/speak-out';
 import NotFound from './components/static/not-found';
-import Database from './utils/database';
-
-Database.loadDatabase();
-//Database.createDocument();
-Database.loadDocument();
 
 React.render((
   <Router history={history}>

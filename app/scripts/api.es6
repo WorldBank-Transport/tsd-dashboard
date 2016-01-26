@@ -1,9 +1,10 @@
 /* eslint camelcase: 0 */  // snake_case query params are not set by us
 
 import ckan from './utils/api/ckan';
-
+import securityApi from './utils/api/security-api';
 
 const API_ROOT = '//data.takwimu.org/api/action/datastore_search_sql?sql=';
+const SECURITY_API_ROOT = '//localhost:8080/';
 
 
 const healthFacilitiesQ = 'SELECT COUNT(*) from "b3ef3486-34fd-4389-bc61-af4520df1858"';
@@ -20,3 +21,6 @@ const waterQ = 'SELECT SUM("POPULATION_NUMBER_PER_URBAN_WATER_UTILTY") as POPULA
 
 export const getWaterStats = (onProgress) =>
   ckan.get(API_ROOT, waterQ, onProgress);
+
+export const login = (username, password) =>
+  securityApi.post(SECURITY_API_ROOT, 'security', {u: username, p: password});

@@ -46,6 +46,13 @@ const allTranslations = {
     'water.title': 'Water',
     'waterdash.metric.title': 'Percent Population Coverage',
 
+    'login.login': 'Login',
+    'login.logout': 'Logout',
+    'login.username': 'Username',
+    'login.password': 'Password',
+    'login.welcome': 'Welcome',
+
+
     'view-mode.points.waterpoints': 'All Waterpoints',
     'view-mode.points.dams': 'All Dams',
     'view-mode.points.boreholes': 'All Boreholes',
@@ -78,6 +85,10 @@ const allTranslations = {
     'error.api.ckan.record-missing-field': i => `A record from the CKAN data server was missing the field '${i[0]}'`,
     'error.api.postprocess': 'An error occurred while the application was processing data',
     'error.api.static.postprocess': 'An error occurred while the application was procesing boundary data',
+    'error.not-found.user-not-found': 'User Not Valid',
+    'error.ise.database-error': 'Server Error, contact support',
+    'error.bad-request.invalid-user-password': 'User or Password invalid',
+    'error.bad-request.invalid-parameters': 'Invalid User or Password',
   },
   'sw-tz': {
     'site-name': 'Water Dashboard',
