@@ -23,7 +23,7 @@ const Homepage = React.createClass({
           <div className="text-section centered">
           <p><T k="home.text.p1" /></p>
           <p><T k="home.text.p2" /></p>
-          <p><T k="home.text.p2" /></p>
+          <p><T k="home.text.p3" /></p>
           </div>
 
         </div>
