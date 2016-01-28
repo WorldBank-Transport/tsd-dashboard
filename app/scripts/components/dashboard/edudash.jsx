@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'reflux';
-import { loadE } from '../../actions/data';
 import EducationStore from '../../stores/education';
 
 import T from '../misc/t';

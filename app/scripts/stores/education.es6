@@ -37,7 +37,7 @@ const EducationStore = createStore({
       ckan: data[0],
     });
   },
-  
+
   addProperty(property) {
     this.setData({
       ...this.get(),

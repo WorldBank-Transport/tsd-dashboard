@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'reflux';
-import { loadH } from '../../actions/data';
 import HealthStore from '../../stores/health';
 
 import T from '../misc/t';

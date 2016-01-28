@@ -57,5 +57,5 @@ const HealthStore = createStore({
     });
   },
 });
-  
+
 export default HealthStore;

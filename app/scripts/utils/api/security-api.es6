@@ -28,17 +28,16 @@ export function post(root, path, body) {
 /**
  * @param {string} root The SECURITY API root
  * @param {string} path Any path to be applied
- * @param {object} body Any object to be applied
+ * @param {object} query Any object to be applied
  * @returns {Promise<object>} The converted data
  */
 export function get(root, path, query) {
   let queryString = '';
-  const v = toQuery(query)
+  toQuery(query)
     .andThen(querys => queryString = querys);
-
-  return fetchAndCheck(root + path + '?' + queryString)
+  return fetchAndCheck(`${root}${path}?${queryString}`)
     .then(resp => resp.json())
-    .then(rejectIfNotSuccess)
+    .then(rejectIfNotSuccess);
 }
 
 const securityApi = {
