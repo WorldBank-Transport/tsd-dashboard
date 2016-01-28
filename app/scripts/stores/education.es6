@@ -1,9 +1,9 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
 import { loadE, loadProgressE, loadCompletedE, loadFailedE } from '../actions/data';
-import { getEducation } from '../api';
+import { getEducation, getProperty } from '../api';
 
-const DUMMY = [];
+const DUMMY = {};
 
 let CURRENT_REQUEST;
 
@@ -32,16 +32,30 @@ const EducationStore = createStore({
     }
   },
   loadData(data) {
-    this.setData(data);
+    this.setData({
+      ...this.get(),
+      ckan: data[0],
+    });
+  },
+  
+  addProperty(property) {
+    this.setData({
+      ...this.get(),
+      [property.object.p]: property.object.v,
+    });
   },
 
   getDataFromApi() {
-    const proxier = getNextProxier();
-    getEducation(proxier(loadProgressE))
-      .then(proxier(loadCompletedE))
-      .catch(proxier(loadFailedE));
+    getProperty('edudash.homepage.year').then(this.addProperty);
+    getProperty('edudash.homepage.target').then(this.addProperty);
+    getProperty('edudash.homepage.query').then(property => {
+      this.addProperty(property);
+      const proxier = getNextProxier();
+      getEducation(property.object.v, proxier(loadProgressE))
+        .then(proxier(loadCompletedE))
+        .catch(proxier(loadFailedE));
+    });
   },
 });
-
 
 export default EducationStore;

@@ -50,7 +50,6 @@ const HealthStore = createStore({
     getProperty('healthdash.homepage.target').then(this.addProperty);
     getProperty('healthdash.homepage.query').then(property => {
       this.addProperty(property);
-      debugger;
       const proxier = getNextProxier();
       getHealthFacilities(property.object.v, proxier(loadProgressH))
         .then(proxier(loadCompletedH))
@@ -58,6 +57,5 @@ const HealthStore = createStore({
     });
   },
 });
-
-
+  
 export default HealthStore;

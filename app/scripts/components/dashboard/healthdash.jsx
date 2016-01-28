@@ -18,7 +18,7 @@ const HealthDash = React.createClass({
   },
 
   render() {
-    if (Object.keys(this.state.data).length > 0 && this.state.data.hasOwnProperty('ckan')) {
+    if (this.state.data.hasOwnProperty('ckan')) {
       return (
         <div className="healthdash">
           <h4><T k="health.metric.title" /></h4>
