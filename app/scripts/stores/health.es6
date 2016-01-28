@@ -1,9 +1,9 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
 import { loadH, loadProgressH, loadCompletedH, loadFailedH } from '../actions/data';
-import { getHealthFacilities } from '../api';
+import { getHealthFacilities, getProperty } from '../api';
 
-const DUMMY = [];
+const DUMMY = {};
 
 let CURRENT_REQUEST;
 
@@ -32,14 +32,30 @@ const HealthStore = createStore({
     }
   },
   loadData(data) {
-    this.setData(data);
+    this.setData({
+      ...this.get(),
+      ckan: data[0],
+    });
+  },
+
+  addProperty(property) {
+    this.setData({
+      ...this.get(),
+      [property.object.p]: property.object.v,
+    });
   },
 
   getDataFromApi() {
-    const proxier = getNextProxier();
-    getHealthFacilities(proxier(loadProgressH))
-      .then(proxier(loadCompletedH))
-      .catch(proxier(loadFailedH));
+    getProperty('healthdash.homepage.year').then(this.addProperty);
+    getProperty('healthdash.homepage.target').then(this.addProperty);
+    getProperty('healthdash.homepage.query').then(property => {
+      this.addProperty(property);
+      debugger;
+      const proxier = getNextProxier();
+      getHealthFacilities(property.object.v, proxier(loadProgressH))
+        .then(proxier(loadCompletedH))
+        .catch(proxier(loadFailedH));
+    });
   },
 });
 

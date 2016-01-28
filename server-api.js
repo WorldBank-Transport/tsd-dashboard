@@ -82,13 +82,13 @@ app.get('/users', function(req, res) {
       console.err(err);
       res.json(createError(500, 'error.ise.database-error'));
     } else {
+      console.log(docs);
       res.json(docs);
     }
   });
 });
 
 app.post('/security', function(req, res) {
-  console.log(req.body);
   const user = req.body.u;
   const password = req.body.p;
   if (!user || !password) {
@@ -109,6 +109,25 @@ app.post('/security', function(req, res) {
       }
     }
   });
+});
+
+app.get('/property', function(req, res) {
+  const propName = req.query.p;
+  if (!propName) {
+    res.json(createError(400, 'error.bad-request.invalid-parameters'));
+  } else {
+    db.data.findOne({ p: propName }, function (err, doc) {
+      if (err) {
+        res.json(createError(500, 'error.ise.database-error'));
+      } else {
+        if (!doc) {
+          res.json(createError(404, 'error.not-found.property-not-found'));
+        } else {
+          res.json(createResponse(200, doc));
+        }
+      }
+    });
+  }
 });
 
 // START THE SERVER
