@@ -20,14 +20,11 @@ export const loadUrl = createAction();
 
 // SIDE-EFFECT: xhr request is triggered on populationActions.load()
 loadUrl.listen(() => {
-  debugger;
   getProperty('ckan.url').then(property => {
-    debugger
     loadE(property.object.v);
     loadW(property.object.v);
     loadH(property.object.v);
   }).catch(err => {
-    debugger;
     loadFailedE();
     loadFailedH();
     loadFailedW();

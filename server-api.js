@@ -130,6 +130,33 @@ app.get('/property', function(req, res) {
   }
 });
 
+app.post('/properties', function(req, res) {
+  const userId = req.body.userId;
+  const properties = req.body.properties;
+  if (!userId) {
+    res.json(createError(400, 'error.bad-request.invalid-parameters'));
+  } else {
+    db.users.findOne({ _id: userId }, function (err, doc) {
+      if (err) {
+        res.json(createError(500, 'error.ise.database-error'));
+      } else {
+        if (!doc) {
+          res.json(createError(400, 'error.bad-request.invalid-user'));
+        } else {
+          properties.forEach(property => {
+            db.data.update({ p: property.p }, property, {}, function (err, numReplaced) {
+              if(err || numReplaced !== 1) {
+                res.json(createError(500, 'error.ise.database-error'));  
+              }
+            });
+          });
+          res.json(createResponse(200, properties));
+        }
+      }
+    });
+  }
+});
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);
