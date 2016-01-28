@@ -14,10 +14,6 @@ const WaterDash = React.createClass({
     connect(WaterStore, 'data'),
   ],
 
-  componentDidMount() {
-    loadW();
-  },
-
   render() {
     if (this.state.data.hasOwnProperty('ckan')) {
       return (

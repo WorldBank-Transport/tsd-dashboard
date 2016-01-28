@@ -26,6 +26,9 @@ console.log("Runnin Database Init");
 checkAndSet('users', { u: 'admin' }, { u: 'admin', p: 'admin', n: 'Admin Admin'});
 checkAndSet('users', { u: 'mark' }, { u: 'mark', p: 'admin', n: 'Mark Irura'});
 
+checkAndSet('data', { p: 'ckan.url' }, { p: 'ckan.url', v: '//data.takwimu.org/api/action/datastore_search_sql?sql='});
+checkAndSet('data', { p: 'ckan.base-url' }, { p: 'ckan.base-url', v: '//data.takwimu.org/api'});
+
 checkAndSet('data', { p: 'edudash.homepage.year' }, { p: 'edudash.homepage.year', v: '2014'});
 checkAndSet('data', { p: 'edudash.homepage.target' }, { p: 'edudash.homepage.target', v: '23 %'});
 checkAndSet('data', { p: 'edudash.homepage.query' }, { p: 'edudash.homepage.query', v: 'select * from "lala"'});

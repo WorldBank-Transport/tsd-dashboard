@@ -24,9 +24,9 @@ const EducationStore = createStore({
     this.listenTo(loadE, 'loadIfNeeded');
     this.listenTo(loadCompletedE, 'loadData');
   },
-  loadIfNeeded() {
+  loadIfNeeded(url) {
     if (this.get() === DUMMY) {
-      this.getDataFromApi();
+      this.getDataFromApi(url);
     } else {
       loadCompletedE(this.get());
     }
@@ -45,13 +45,13 @@ const EducationStore = createStore({
     });
   },
 
-  getDataFromApi() {
+  getDataFromApi(url) {
     getProperty('edudash.homepage.year').then(this.addProperty);
     getProperty('edudash.homepage.target').then(this.addProperty);
     getProperty('edudash.homepage.query').then(property => {
       this.addProperty(property);
       const proxier = getNextProxier();
-      getEducation(property.object.v, proxier(loadProgressE))
+      getEducation(url, property.object.v, proxier(loadProgressE))
         .then(proxier(loadCompletedE))
         .catch(proxier(loadFailedE));
     });

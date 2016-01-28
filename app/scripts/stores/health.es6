@@ -24,9 +24,9 @@ const HealthStore = createStore({
     this.listenTo(loadH, 'loadIfNeeded');
     this.listenTo(loadCompletedH, 'loadData');
   },
-  loadIfNeeded() {
+  loadIfNeeded(url) {
     if (this.get() === DUMMY) {
-      this.getDataFromApi();
+      this.getDataFromApi(url);
     } else {
       loadCompletedH(this.get());
     }
@@ -45,13 +45,13 @@ const HealthStore = createStore({
     });
   },
 
-  getDataFromApi() {
+  getDataFromApi(url) {
     getProperty('healthdash.homepage.year').then(this.addProperty);
     getProperty('healthdash.homepage.target').then(this.addProperty);
     getProperty('healthdash.homepage.query').then(property => {
       this.addProperty(property);
       const proxier = getNextProxier();
-      getHealthFacilities(property.object.v, proxier(loadProgressH))
+      getHealthFacilities(url, property.object.v, proxier(loadProgressH))
         .then(proxier(loadCompletedH))
         .catch(proxier(loadFailedH));
     });

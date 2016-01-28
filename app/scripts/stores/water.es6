@@ -24,9 +24,9 @@ const WaterStore = createStore({
     this.listenTo(loadW, 'loadIfNeeded');
     this.listenTo(loadCompletedW, 'loadData');
   },
-  loadIfNeeded() {
+  loadIfNeeded(url) {
     if (this.get() === DUMMY) {
-      this.getDataFromApi();
+      this.getDataFromApi(url);
     } else {
       loadCompletedW(this.get());
     }
@@ -45,13 +45,13 @@ const WaterStore = createStore({
     });
   },
 
-  getDataFromApi() {
+  getDataFromApi(url) {
     getProperty('waterdash.homepage.year').then(this.addProperty);
     getProperty('waterdash.homepage.target').then(this.addProperty);
     getProperty('waterdash.homepage.query').then(property => {
       this.addProperty(property);
       const proxier = getNextProxier();
-      getWaterStats(property.object.v, proxier(loadProgressW))
+      getWaterStats(url, property.object.v, proxier(loadProgressW))
         .then(proxier(loadCompletedW))
         .catch(proxier(loadFailedW));
     });

@@ -13,10 +13,6 @@ const HealthDash = React.createClass({
     connect(HealthStore, 'data'),
   ],
 
-  componentDidMount() {
-    loadH();
-  },
-
   render() {
     if (this.state.data.hasOwnProperty('ckan')) {
       return (

@@ -5,13 +5,14 @@ import MiniDash from './minidash';
 import EduDash from '../dashboard/edudash';
 import HealthDash from '../dashboard/healthdash';
 import WaterDash from '../dashboard/waterdash';
+import { loadUrl } from '../../actions/data';
 
 require('stylesheets/boilerplate/static-content');
 
 const Homepage = React.createClass({
 
   componentDidMount() {
-
+    loadUrl();
   },
 
   render() {

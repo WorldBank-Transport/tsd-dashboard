@@ -13,10 +13,6 @@ const EduDash = React.createClass({
     connect(EducationStore, 'data'),
   ],
 
-  componentDidMount() {
-    loadE();
-  },
-
   render() {
     if (this.state.data.hasOwnProperty('ckan')) {
       return (
