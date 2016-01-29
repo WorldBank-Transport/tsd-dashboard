@@ -1,4 +1,6 @@
 import warn from '../warn';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 
 /**
@@ -36,5 +38,23 @@ export function rejectIfNotHTTPOk(response) {
 export function fetchAndCheck(url) {
   return fetch(url)
     .catch(makeHTTPErrorNice)
+    .then(rejectIfNotHTTPOk);
+}
+
+
+/**
+ * @param {string} url The url to post
+ * @param {object} body The request body to post
+ * @returns {Promise} The fetch response object
+ */
+export function postAndCheck(url, body) {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  }).catch(makeHTTPErrorNice)
     .then(rejectIfNotHTTPOk);
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'reflux';
-import { loadW } from '../../actions/data';
 import WaterStore from '../../stores/water';
 
 import T from '../misc/t';
@@ -14,18 +13,14 @@ const WaterDash = React.createClass({
     connect(WaterStore, 'data'),
   ],
 
-  componentDidMount() {
-    loadW();
-  },
-
   render() {
-    if (this.state.data.length > 0) {
+    if (this.state.data.hasOwnProperty('ckan')) {
       return (
         <div className="waterdash">
           <h4><T k="waterdash.metric.title" /></h4>
-          <h2>{(this.state.data[0].served / this.state.data[0].population * 100).toFixed(1)} %</h2>
-          <p>{this.state.data[0].YEAR_OF_RESULT} <T k="home.target" /></p>
-          <div className="target-stat">61%</div>
+          <h2>{(this.state.data.ckan.served / this.state.data.ckan.population * 100).toFixed(1)} %</h2>
+          <p>{this.state.data['waterdash.homepage.year']} <T k="home.target" /></p>
+          <div className="target-stat">{this.state.data['waterdash.homepage.target']}</div>
         </div>
       );
     } else {

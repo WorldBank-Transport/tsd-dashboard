@@ -24,6 +24,7 @@ const allTranslations = {
     'home.water': 'Water',
     'home.button.open-data': 'Visit the Open Data Portal',
     'home.button.brn': 'Learn more about BRN',
+    'home.button.admin': 'Admin',
     'home.target': 'Target',
 
     'nav.home': 'Home',
@@ -45,6 +46,13 @@ const allTranslations = {
     'health.metric.title': 'Rated Health Care Facilities',
     'water.title': 'Water',
     'waterdash.metric.title': 'Percent Population Coverage',
+
+    'login.login': 'Login',
+    'login.logout': 'Logout',
+    'login.username': 'Username',
+    'login.password': 'Password',
+    'login.welcome': 'Welcome',
+
 
     'view-mode.points.waterpoints': 'All Waterpoints',
     'view-mode.points.dams': 'All Dams',
@@ -68,6 +76,25 @@ const allTranslations = {
     'loading.wards': 'Loading wards...',
     'loading.points': 'If you see this message, there is likely an error in the application.',
 
+    'admin.title': 'Admin Section',
+    'admin.section.general': 'General Properties',
+    'ckan.url': 'CKAN Data URL',
+    'ckan.base-url': 'Base CKAN Data URL',
+    'admin.section.education': 'Education Properties',
+    'edudash.homepage.year': 'Education Home target year',
+    'edudash.homepage.target': 'Education Home target',
+    'edudash.homepage.query': 'Education Home query to data',
+    'admin.section.health': 'Health Properties',
+    'healthdash.homepage.year': 'Health Home target year',
+    'healthdash.homepage.target': 'Health Home target',
+    'healthdash.homepage.query': 'Health Home query to data',
+    'admin.section.water': 'Water Properties',
+    'waterdash.homepage.year': 'Water Home target year',
+    'waterdash.homepage.target': 'Water Home target',
+    'waterdash.homepage.query': 'Water Home query to data',
+    'admin.button': 'Submit',
+    'saved.properties.successs': 'All properties saved',
+
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
     'error.api.pre-request': 'An error occurred when the application was preparing to fetch data',
@@ -78,6 +105,10 @@ const allTranslations = {
     'error.api.ckan.record-missing-field': i => `A record from the CKAN data server was missing the field '${i[0]}'`,
     'error.api.postprocess': 'An error occurred while the application was processing data',
     'error.api.static.postprocess': 'An error occurred while the application was procesing boundary data',
+    'error.not-found.user-not-found': 'User Not Valid',
+    'error.ise.database-error': 'Server Error, contact support',
+    'error.bad-request.invalid-user-password': 'User or Password invalid',
+    'error.bad-request.invalid-parameters': 'Invalid User or Password',
   },
   'sw-tz': {
     'site-name': 'Water Dashboard',

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'reflux';
-import { loadE } from '../../actions/data';
 import EducationStore from '../../stores/education';
 
 import T from '../misc/t';
@@ -13,18 +12,14 @@ const EduDash = React.createClass({
     connect(EducationStore, 'data'),
   ],
 
-  componentDidMount() {
-    loadE();
-  },
-
   render() {
-    if (this.state.data.length > 0) {
+    if (this.state.data.hasOwnProperty('ckan')) {
       return (
         <div className="edudash">
           <h4><T k="education.metric.title" /></h4>
-          <h2>{(this.state.data[0].avg).toFixed(1)} %</h2>
-          <p>{this.state.data[0].YEAR_OF_RESULT} <T k="home.target" /></p>
-          <div className="target-stat">23%</div>
+          <h2>{(this.state.data.ckan.avg).toFixed(1)} %</h2>
+          <p>{this.state.data['edudash.homepage.year']} <T k="home.target" /></p>
+          <div className="target-stat">{this.state.data['edudash.homepage.target']}</div>
         </div>
       );
     } else {

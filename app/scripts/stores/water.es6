@@ -1,9 +1,9 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
 import { loadW, loadProgressW, loadCompletedW, loadFailedW } from '../actions/data';
-import { getWaterStats } from '../api';
+import { getWaterStats, getProperty } from '../api';
 
-const DUMMY = [];
+const DUMMY = {};
 
 let CURRENT_REQUEST;
 
@@ -24,23 +24,37 @@ const WaterStore = createStore({
     this.listenTo(loadW, 'loadIfNeeded');
     this.listenTo(loadCompletedW, 'loadData');
   },
-  loadIfNeeded() {
+  loadIfNeeded(url) {
     if (this.get() === DUMMY) {
-      this.getDataFromApi();
+      this.getDataFromApi(url);
     } else {
       loadCompletedW(this.get());
     }
   },
-
   loadData(data) {
-    this.setData(data);
+    this.setData({
+      ...this.get(),
+      ckan: data[0],
+    });
   },
 
-  getDataFromApi() {
-    const proxier = getNextProxier();
-    getWaterStats(proxier(loadProgressW))
-      .then(proxier(loadCompletedW))
-      .catch(proxier(loadFailedW));
+  addProperty(property) {
+    this.setData({
+      ...this.get(),
+      [property.object.p]: property.object.v,
+    });
+  },
+
+  getDataFromApi(url) {
+    getProperty('waterdash.homepage.year').then(this.addProperty);
+    getProperty('waterdash.homepage.target').then(this.addProperty);
+    getProperty('waterdash.homepage.query').then(property => {
+      this.addProperty(property);
+      const proxier = getNextProxier();
+      getWaterStats(url, property.object.v, proxier(loadProgressW))
+        .then(proxier(loadCompletedW))
+        .catch(proxier(loadFailedW));
+    });
   },
 });
 

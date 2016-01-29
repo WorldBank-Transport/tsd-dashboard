@@ -1,9 +1,9 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
 import { loadH, loadProgressH, loadCompletedH, loadFailedH } from '../actions/data';
-import { getHealthFacilities } from '../api';
+import { getHealthFacilities, getProperty } from '../api';
 
-const DUMMY = [];
+const DUMMY = {};
 
 let CURRENT_REQUEST;
 
@@ -24,24 +24,38 @@ const HealthStore = createStore({
     this.listenTo(loadH, 'loadIfNeeded');
     this.listenTo(loadCompletedH, 'loadData');
   },
-  loadIfNeeded() {
+  loadIfNeeded(url) {
     if (this.get() === DUMMY) {
-      this.getDataFromApi();
+      this.getDataFromApi(url);
     } else {
       loadCompletedH(this.get());
     }
   },
   loadData(data) {
-    this.setData(data);
+    this.setData({
+      ...this.get(),
+      ckan: data[0],
+    });
   },
 
-  getDataFromApi() {
-    const proxier = getNextProxier();
-    getHealthFacilities(proxier(loadProgressH))
-      .then(proxier(loadCompletedH))
-      .catch(proxier(loadFailedH));
+  addProperty(property) {
+    this.setData({
+      ...this.get(),
+      [property.object.p]: property.object.v,
+    });
+  },
+
+  getDataFromApi(url) {
+    getProperty('healthdash.homepage.year').then(this.addProperty);
+    getProperty('healthdash.homepage.target').then(this.addProperty);
+    getProperty('healthdash.homepage.query').then(property => {
+      this.addProperty(property);
+      const proxier = getNextProxier();
+      getHealthFacilities(url, property.object.v, proxier(loadProgressH))
+        .then(proxier(loadCompletedH))
+        .catch(proxier(loadFailedH));
+    });
   },
 });
-
 
 export default HealthStore;
