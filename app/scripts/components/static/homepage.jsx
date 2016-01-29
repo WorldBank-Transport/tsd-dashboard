@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'reflux';
 import Button from '../boilerplate/button';
 import T from '../misc/t';
 import MiniDash from './minidash';
@@ -6,6 +7,7 @@ import EduDash from '../dashboard/edudash';
 import HealthDash from '../dashboard/healthdash';
 import WaterDash from '../dashboard/waterdash';
 import { loadUrl } from '../../actions/data';
+import LoginStore from '../../stores/login';
 
 require('stylesheets/boilerplate/static-content');
 
@@ -14,6 +16,10 @@ const Homepage = React.createClass({
   componentDidMount() {
     loadUrl();
   },
+
+  mixins: [
+    connect(LoginStore, 'login'),
+  ],
 
   render() {
     return (
@@ -40,15 +46,20 @@ const Homepage = React.createClass({
           <div className="buttons">
             <h5><T k="home.other" /></h5>
             <div className="button-col left">
-              <Button linkTo="/dash/points/health/">
+              <Button linkTo="">
                 <T k="home.button.open-data" />
               </Button>
             </div>
             <div className="button-col right">
-              <Button linkTo="/dash/points/health/">
+              <Button linkTo="">
                 <T k="home.button.brn" />
               </Button>
             </div>
+            {this.state.login.logged ? 
+              (<div className="button-col left">
+                <Button linkTo="/admin"><T k="home.button.admin" /></Button>
+              </div>) : ''
+            }
           </div>
         </div>
       </div>

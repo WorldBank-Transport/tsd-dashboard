@@ -24,6 +24,7 @@ const allTranslations = {
     'home.water': 'Water',
     'home.button.open-data': 'Visit the Open Data Portal',
     'home.button.brn': 'Learn more about BRN',
+    'home.button.admin': 'Admin',
     'home.target': 'Target',
 
     'nav.home': 'Home',
