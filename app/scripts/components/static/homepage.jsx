@@ -13,13 +13,13 @@ require('stylesheets/boilerplate/static-content');
 
 const Homepage = React.createClass({
 
-  componentDidMount() {
-    loadUrl();
-  },
-
   mixins: [
     connect(LoginStore, 'login'),
   ],
+
+  componentDidMount() {
+    loadUrl();
+  },
 
   render() {
     return (
@@ -55,7 +55,7 @@ const Homepage = React.createClass({
                 <T k="home.button.brn" />
               </Button>
             </div>
-            {this.state.login.logged ? 
+            {this.state.login.logged ?
               (<div className="button-col left">
                 <Button linkTo="/admin"><T k="home.button.admin" /></Button>
               </div>) : ''
