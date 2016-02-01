@@ -8,6 +8,7 @@
   float: left;
   margin: $login-general-space + 2 $login-general-space +5 0 0;
   position: relative;
+  z-index: 2;
   a {
     &:hover {
       color: $theme-blue;
