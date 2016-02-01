@@ -1,3 +1,15 @@
+@import '../layout';
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/type';
+@import '../config/box';
+
 .login {
-  margin: 0px;  
+  float: left;
+  margin: 12px 15px 0 0;
+  a {
+    &:hover {
+      color: $theme-blue;
+    }
+  }
 }

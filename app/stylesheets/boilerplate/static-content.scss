@@ -6,8 +6,19 @@
 
 // homepage
 .homebanner {
+  opacity: 1;
+  &:hover,
+  &:focus {
+    img {
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+  }
   img {
     @include bottom-stat-border(3px, $grey-light);
+    @include transition(500ms);
+    opacity: 1;
     width: $full-width;
   }
 }
@@ -22,6 +33,7 @@
     color: $text-color;
     font-size: $dash-intro-title;
     margin-bottom: 0;
+    margin-top: 0;
     text-transform: uppercase;
   }
 
@@ -29,6 +41,7 @@
     color: $theme-blue;
     font-size: $dash-page-title;
     font-weight: $medium-font-weight;
+    margin-bottom: 0;
     margin-top: 0;
     text-transform: capitalize;
   }
@@ -74,6 +87,7 @@
     font-size: $medium-text;
     font-weight: $medium-font-weight;
     margin-bottom:  $base-unit / 2;
+    margin-top: 0;
     text-align: center;
     text-transform: uppercase;
   }
@@ -155,6 +169,12 @@
         position: relative;
         width: 28%;
 
+        &:hover {
+          h2 {
+            z-index: 2;
+          }
+        }
+
         @include up-to($tablet-landscape) {
           width: 27%;
         }
@@ -183,6 +203,7 @@
           position: absolute;
           text-align: center;
           top: $general-content-padding / 6;
+          z-index: 2;
         }
 
         .content {
