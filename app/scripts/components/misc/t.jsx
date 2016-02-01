@@ -135,6 +135,12 @@ const allTranslations = {
     'nav.data': 'Data',
     'nav.speak-out': 'Maoni',
 
+    'login.login': 'Ingia',
+    'login.logout': 'Ondoka',
+    'login.username': 'Jina la mtumiaji',
+    'login.password': 'Nywila',
+    'login.welcome': 'Karibu',
+
     'static.data-title': 'Chunguza data ya dashibodi.',
     'static.data-content': 'Dashibodi ya elimu imejengwa juu ya Takwimu Huria zilizoainishwa na Serikali ya Tanzania. Takwimu ghafi zimetangazwa kwa tovuti kuu ya Serikali kwa njia inayosomeka na kompyuta ikitumia leseni inayohamasisha matumizi kwa jumla. Takwimu zimetangazwa na Wizara ya Maji, na Ofisi ya Taifa ya Takwimu.',
     'static.speakout-title': 'Sauti yako ni ya maana!',
