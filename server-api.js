@@ -22,6 +22,7 @@ const DATABASE_PATH = __dirname + '/data/';
 console.log('path to database: ' + DATABASE_PATH);
 db.users = new Datastore({ filename: `${DATABASE_PATH}/users.json`, autoload: true });
 db.data = new Datastore({ filename: `${DATABASE_PATH}/data.json`, autoload: true });
+db.share = new Datastore({ filename: `${DATABASE_PATH}/share.json`, autoload: true });
 
 /**
  * Enabling cross cross domain request
@@ -151,6 +152,35 @@ app.post('/properties', function(req, res) {
             });
           });
           res.json(createResponse(200, properties));
+        }
+      }
+    });
+  }
+});
+
+app.post('/share', function(req, res) {
+  db.share.insert(req.body, function (err, newDoc) {
+    if (err) {
+      res.json(createError(500, 'error.ise.database-error'));
+    } else {
+      res.json(createResponse(200, {shareId: newDoc._id}));
+    }
+  });
+});
+
+app.get('/share', function(req, res) {
+  const id = req.query.id;
+  if (!id) {
+    res.json(createError(400, 'error.bad-request.invalid-parameters'));
+  } else {
+    db.share.findOne({ _id: id }, function (err, doc) {
+      if (err) {
+        res.json(createError(500, 'error.ise.database-error'));
+      } else {
+        if (!doc) {
+          res.json(createError(404, 'error.not-found.share-not-found'));
+        } else {
+          res.json(createResponse(200, doc));
         }
       }
     });
