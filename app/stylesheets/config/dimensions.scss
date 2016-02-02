@@ -5,8 +5,8 @@ $full-width: 100%;
 
 // header
 $dash-title-width-mobile: 60px;
-$header-height: 98px;
-$logo-width: 90px;
+$header-height: 80px;
+$logo-width: 78px;
 $logo-width-mobile: 50px;
 $nav-item-height: 20px;
 $top-nav-vert-pos-mobile: 65px;
@@ -66,11 +66,16 @@ $metric-stat-height: 310px;
 $static-content-position: 70px;
 $static-content-width: 80%;
 
+// login section
+$login-window-hposition: -200px;
+$login-general-space: 10px;
+
 // margins and padding
-$logo-top-position: 18px;
+$logo-top-position: 15px;
 $header-common-margin: 20px;
-$nav-top-position: 30px;
+$nav-top-position: 17px;
 $nav-top-position-mobile: 15px;
+$dash-title-top-position: 15px;
 
 $footer-nav-top-position: 35px;
 $footer-text-top-position: 20px;

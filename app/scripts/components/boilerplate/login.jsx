@@ -64,10 +64,10 @@ const Login = React.createClass({
         {linkDiv}
         <div className="flyout" style={{display: visible}}>
           <div className="row">
-            <T k="login.username" /><input onChange={this.handleChange('username')} value={this.state.username}/>
+            <span className="login-label"><T k="login.username" /></span><input onChange={this.handleChange('username')} value={this.state.username}/>
           </div>
           <div className="row">
-            <T k="login.password" /><input onChange={this.handleChange('password')} type="password" value={this.state.password}/>
+            <span className="login-label"><T k="login.password" /></span><input onChange={this.handleChange('password')} type="password" value={this.state.password}/>
           </div>
           <div className="row">
             <button onClick={this.login}><T k="login.login" /></button>

@@ -3,7 +3,7 @@
 import ckan from './utils/api/ckan';
 import securityApi from './utils/api/security-api';
 
-const SECURITY_API_ROOT = '//localhost:8080/';
+const SECURITY_API_ROOT = '//localhost:9080/';
 
 export const getHealthFacilities = (url, healthFacilitiesQ, onProgress) =>
   ckan.get(url, healthFacilitiesQ, onProgress);

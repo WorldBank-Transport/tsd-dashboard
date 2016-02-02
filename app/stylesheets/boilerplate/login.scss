@@ -1,3 +1,58 @@
+@import '../layout';
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/type';
+@import '../config/box';
+
 .login {
-  margin: 0px;  
+  float: left;
+  margin: $login-general-space + 2 $login-general-space +5 0 0;
+  position: relative;
+  z-index: 2;
+  a {
+    &:hover {
+      color: $theme-blue;
+    }
+  }
+
+  .flyout {
+    @include border-radius(3px);
+    background: $theme-blue;
+    color: $text-inverse;
+    margin-left: $login-window-hposition;
+    margin-top: $login-general-space;
+    padding: $login-general-space * 2;
+    position: absolute;
+
+    .row {
+      margin-bottom: $login-general-space / 2;
+
+      .login-label {
+        display: block;
+        float: left;
+        width: $full-width;
+      }
+      input {
+        border: 2px solid $grey-light;
+        outline: none;
+        padding: $login-general-space / 2 $login-general-space / 3;
+        width: $full-width - 5;
+      }
+      button {
+        background: $theme-blue-light;
+        border: 2px solid $theme-blue-light;
+        color: $text-inverse;
+        font-size: $medium-text;
+        font-weight: $title-weight;
+        margin-top: $login-general-space;
+        padding: $login-general-space - 5 $login-general-space * 2;
+
+        &:hover {
+          background: $grey-light;
+          border: 2px solid $grey-light;
+          color: $text-color;
+        }
+      }
+    }
+  }
 }
