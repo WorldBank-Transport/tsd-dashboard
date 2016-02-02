@@ -3,7 +3,7 @@
 import ckan from './utils/api/ckan';
 import securityApi from './utils/api/security-api';
 
-const SECURITY_API_ROOT = '//http://api.takwimu.org//';
+const SECURITY_API_ROOT = '//api.takwimu.org/';
 
 export const getHealthFacilities = (url, healthFacilitiesQ, onProgress) =>
   ckan.get(url, healthFacilitiesQ, onProgress);
