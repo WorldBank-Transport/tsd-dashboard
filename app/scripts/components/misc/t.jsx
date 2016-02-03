@@ -9,7 +9,7 @@ import langStore from '../../stores/lang';
 
 const allTranslations = {
   'en': {
-    'site-name': 'Open Data Dashboards',
+    'site-name': 'Tanzania Sectoral Performance Dashboards',
     'site.flag': 'Flag of Tanzania',
 
     'home.header': 'Big Results Now',
