@@ -78,15 +78,71 @@ app.get('/', function(req, res) {
 });
 
 app.get('/users', function(req, res) {
-  db.users.find({ u: 'admin' }, function (err, docs) {
-    if (err) {
-      console.err(err);
-      res.json(createError(500, 'error.ise.database-error'));
-    } else {
-      console.log(docs);
-      res.json(docs);
-    }
-  });
+  const userId = req.query.userId;
+  if (!userId) {
+    res.json(createError(400, 'error.bad-request.invalid-parameters'));
+  } else  {
+    db.users.findOne({ _id: userId }, function (err, doc) {
+      if (err) {
+        res.json(createError(500, 'error.ise.database-error'));
+      } else {
+        if (!doc) {
+          res.json(createError(400, 'error.bad-request.invalid-user'));
+        } else {
+          db.users.find({}, function (err, docs) {
+            if (err) {
+              console.err(err);
+              res.json(createError(500, 'error.ise.database-error'));
+            } else {
+              res.json(createResponse(200, docs));
+            }
+          });
+        }
+      }
+    });
+  }
+});
+
+app.post('/user', function(req, res) {
+  const userId = req.body.userId;
+  const user = req.body.user;
+  if (!userId || !user) {
+    res.json(createError(400, 'error.bad-request.invalid-parameters'));
+  } else  {
+    db.users.findOne({ _id: userId }, function (err, doc) {
+      if (err) {
+        res.json(createError(500, 'error.ise.database-error'));
+      } else {
+        if (!doc) {
+          res.json(createError(400, 'error.bad-request.invalid-user'));
+        } else {
+          db.users.findOne({ _id: user._id }, function (err, doc) {
+            if(err) {
+              res.json(createError(500, 'error.ise.database-error'));
+            } else {
+              if(doc) {
+                db.users.update({ _id: user._id }, user, {}, function (err, numReplaced) {
+                  if(err || numReplaced !== 1) {
+                    res.json(createError(500, 'error.ise.database-error'));
+                  } else {
+                    res.json(createResponse(200, user));
+                  }
+                });      
+              } else {
+                db.users.insert(user, function (err, newUser) {
+                  if (err) {
+                    res.json(createError(500, 'error.ise.database-error'));  
+                  } else {
+                    res.json(createResponse(200, newUser));
+                  }
+                });
+              }
+            }
+          });
+        }
+      }
+    });
+  }
 });
 
 app.post('/security', function(req, res) {

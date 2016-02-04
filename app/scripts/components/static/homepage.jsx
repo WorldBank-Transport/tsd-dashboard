@@ -22,6 +22,14 @@ const Homepage = React.createClass({
   },
 
   render() {
+    const adminSection = this.state.login.logged ? (<div className="buttons">
+      <div className="button-col left">
+        <Button linkTo="/admin"><T k="home.button.admin" /></Button>
+      </div>
+      <div className="button-col right">
+        <Button linkTo="/users"><T k="home.button.users" /></Button>
+      </div>
+    </div>) : '';
     return (
       <div className="home-page">
         <div className="home-header">
@@ -38,9 +46,9 @@ const Homepage = React.createClass({
           <h5><T k="home.select" /></h5>
           <div className="all-dashboard">
             <div className="minidash-wrapper">
-              <a href="http://elimu.takwimu.org"><MiniDash image="edu-img.png" type="education" url="http://elimu.takwimu.org"><EduDash /></MiniDash></a>
-              <a href="http://afya.takwimu.org"><MiniDash image="health-img.png" type="health" url="http://afya.takwimu.org"><HealthDash /></MiniDash></a>
-              <a href="http://maji.takwimu.org"><MiniDash image="water-img.png" type="water" url="http://maji.takwimu.org"><WaterDash /></MiniDash></a>
+              <MiniDash image="edu-img.png" key="edudash" type="education" url="http://elimu.takwimu.org"><EduDash /></MiniDash>
+              <MiniDash image="health-img.png" key="healthdash" type="health" url="http://afya.takwimu.org"><HealthDash /></MiniDash>
+              <MiniDash image="water-img.png" key="waterdash" type="water" url="http://maji.takwimu.org"><WaterDash /></MiniDash>
             </div>
           </div>
           <div className="buttons">
@@ -55,11 +63,7 @@ const Homepage = React.createClass({
                 <T k="home.button.brn" />
               </Button>
             </div>
-            {this.state.login.logged ?
-              (<div className="button-col left">
-                <Button linkTo="/admin"><T k="home.button.admin" /></Button>
-              </div>) : ''
-            }
+            {adminSection}
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import ckan from './utils/api/ckan';
 import securityApi from './utils/api/security-api';
 
 const SECURITY_API_ROOT = '//api.takwimu.org/';
+//const SECURITY_API_ROOT = '//localhost:9080/';
 
 export const getHealthFacilities = (url, healthFacilitiesQ, onProgress) =>
   ckan.get(url, healthFacilitiesQ, onProgress);
@@ -22,3 +23,9 @@ export const getProperty = (propertyName) =>
 
 export const postProperties = (user, properties) =>
   securityApi.post(SECURITY_API_ROOT, 'properties', {userId: user._id, properties: properties});
+
+export const getUsers = (logged) =>
+  securityApi.get(SECURITY_API_ROOT, 'users', {userId: logged._id});
+
+export const postUser = (logged, user) =>
+  securityApi.post(SECURITY_API_ROOT, 'user', {userId: logged._id, user: user});
