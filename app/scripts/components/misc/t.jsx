@@ -111,7 +111,7 @@ const allTranslations = {
     'error.bad-request.invalid-parameters': 'Invalid User or Password',
   },
   'sw-tz': {
-    'site-name': 'Water Dashboard',
+    'site-name': 'Tanzania Dashibodi',
     'site.flag': 'Flag of Tanzania',
     'home.waterpoints': 'Vituo vya maji safi na salama',
     'home.boreholes': 'Visima',
