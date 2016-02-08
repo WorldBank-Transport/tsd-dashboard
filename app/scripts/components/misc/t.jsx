@@ -25,6 +25,7 @@ const allTranslations = {
     'home.button.open-data': 'Visit the Open Data Portal',
     'home.button.brn': 'Learn more about BRN',
     'home.button.admin': 'Admin',
+    'home.button.users': 'Users',
     'home.target': 'Target',
 
     'nav.home': 'Home',
@@ -53,28 +54,24 @@ const allTranslations = {
     'login.password': 'Password',
     'login.welcome': 'Welcome',
 
-
-    'view-mode.points.waterpoints': 'All Waterpoints',
-    'view-mode.points.dams': 'All Dams',
-    'view-mode.points.boreholes': 'All Boreholes',
-    'view-mode.points': i => `All ${i[0]}`,
-    'view-mode.region': 'Region',
-    'view-mode.district': 'District',
-    'view-mode.ward': 'Ward',
-    'view-mode.disabled': 'Data not available',
+    'user.list.title': 'List Of Admin User',
+    'user.u': 'Username',
+    'user.p': 'Password',
+    'user.n': 'Full Name',
+    'user.title': 'User',
+    'user.button': 'Save User',
+    'user.actions': 'Actions',
+    'user.edit': 'Edit',
+    'user.new': 'New User',
+    'user.invalid.u': 'Invalid Parameter Username',
+    'user.invalid.p': 'Invalid Parameter Password',
+    'user.invalid.n': 'Invalid Parameter Full Name',
 
     'overview-bar': 'Overview stuff',
 
     'footer.copy': 'The source code of this website is published under a under a GPL 3.0 license. Visitors are encouraged to examine and re-use the code as long as they publish it under a similar license.',
 
     'loading': 'Loading',
-    'loading.waterpoints': i => `${i[0]} waterpoints loaded...`,
-    'loading.boreholes': i => `${i[0]} boreholes loaded...`,
-    'loading.dams': i => `${i[0]} dams loaded...`,
-    'loading.regions': 'Loading regions...',
-    'loading.districts': 'Loading districts...',
-    'loading.wards': 'Loading wards...',
-    'loading.points': 'If you see this message, there is likely an error in the application.',
 
     'admin.title': 'Admin Section',
     'admin.section.general': 'General Properties',

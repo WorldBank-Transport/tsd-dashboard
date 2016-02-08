@@ -11,7 +11,8 @@ import Homepage from './components/static/homepage';
 import Data from './components/static/data';
 import SpeakOut from './components/static/speak-out';
 import NotFound from './components/static/not-found';
-import Admin from './components/dashboard/admin'
+import Admin from './components/dashboard/admin';
+import Users from './components/dashboard/users';
 
 React.render((
   <Router history={history}>
@@ -20,6 +21,7 @@ React.render((
       <Route component={StaticLayout}>
         <Route path="/" component={Homepage} />
         <Route path="/admin" component={Admin} />
+        <Route path="/users" component={Users} />
         <Route path="data/" component={Data} />
         <Route path="speak-out/" component={SpeakOut} />
       </Route>
