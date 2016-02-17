@@ -54,14 +54,10 @@ const Homepage = React.createClass({
           <div className="buttons">
             <h5><T k="home.other" /></h5>
             <div className="button-col left">
-              <Button linkTo="">
-                <T k="home.button.open-data" />
-              </Button>
+                <a className="button" href="http://opendata.go.tz/" target="_blank"><T k="home.button.open-data" /></a>
             </div>
             <div className="button-col right">
-              <Button linkTo="">
-                <T k="home.button.brn" />
-              </Button>
+              <a className="button" href="" target="_blank"><T k="home.button.brn" /></a>
             </div>
             {adminSection}
           </div>
