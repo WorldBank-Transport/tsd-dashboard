@@ -19,7 +19,7 @@
 
   h1 {
     @include up-to($tablet-portrait) {
-      font-size: $dash-title-mobile;
+      font-size: $dash-intro-title;
       line-height: $dash-title-line-height-mobile;
       margin-top: $header-mobile-space;
       width: $dash-title-width-mobile;
@@ -28,7 +28,7 @@
     float: left;
     font-size: $dash-title;
     font-weight: $title-weight;
-    line-height: $dash-title-line-height;
+    line-height: $dash-title + 2;
     margin-top: $dash-title-top-position;
     text-transform: uppercase;
     width: $tab-label-width;
