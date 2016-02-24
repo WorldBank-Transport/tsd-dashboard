@@ -54,12 +54,12 @@ const Homepage = React.createClass({
           <div className="buttons">
             <h5><T k="home.other" /></h5>
             <div className="button-col left">
-              <Button linkTo="">
+              <Button linkTo="http://www.opendata.go.tz">
                 <T k="home.button.open-data" />
               </Button>
             </div>
             <div className="button-col right">
-              <Button linkTo="">
+              <Button linkTo="http://www.pdb.go.tz/">
                 <T k="home.button.brn" />
               </Button>
             </div>
