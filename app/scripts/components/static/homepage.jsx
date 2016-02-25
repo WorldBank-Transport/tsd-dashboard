@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'reflux';
 import Button from '../boilerplate/button';
+import ButtonEx from '../boilerplate/buttonExLink';
 import T from '../misc/t';
 import MiniDash from './minidash';
 import EduDash from '../dashboard/edudash';
@@ -54,14 +55,14 @@ const Homepage = React.createClass({
           <div className="buttons">
             <h5><T k="home.other" /></h5>
             <div className="button-col left">
-              <Button linkTo="http://www.opendata.go.tz">
+              <ButtonEx linkTo="http://www.opendata.go.tz/">
                 <T k="home.button.open-data" />
-              </Button>
+              </ButtonEx>
             </div>
             <div className="button-col right">
-              <Button linkTo="http://www.pdb.go.tz/">
+              <ButtonEx linkTo="http://www.pdb.go.tz/">
                 <T k="home.button.brn" />
-              </Button>
+              </ButtonEx>
             </div>
             {adminSection}
           </div>
