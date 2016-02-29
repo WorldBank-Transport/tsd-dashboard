@@ -12,9 +12,9 @@
     }
 
     float: left;
+    height: $logo-height;
     margin-right: $header-common-margin;
     margin-top: $logo-top-position;
-    width: $logo-width;
     }
 
   h1 {
@@ -28,10 +28,10 @@
     float: left;
     font-size: $dash-title;
     font-weight: $title-weight;
-    line-height: $dash-title-line-height;
+    line-height: 105%;
     margin-top: $dash-title-top-position;
     text-transform: uppercase;
-    width: $tab-label-width;
+    width: $dash-title-width;
     a {
       color: $theme-blue-alt;
       &:hover {

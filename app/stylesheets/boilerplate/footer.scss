@@ -16,8 +16,9 @@
   .copy {
     display: inline-block;
     float: right;
-    font-size: $footer-text;
-    margin-top: $footer-text-top-position;
+    font-size: $footer-paragraph;
+    line-height: 110%;
+    margin-top: $footer-text-top-position - 5;
     text-align: right;
     width: $copy-width-large;
 
@@ -32,4 +33,11 @@
       width: 100%;
     }
   }
+}
+
+.footer-logo {
+  float: left;
+  height: $footer-logo-height;
+  margin-left: $footer-logo-margin;
+  margin-top: $footer-logo-margin + 1;
 }

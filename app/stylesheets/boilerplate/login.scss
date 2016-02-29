@@ -6,10 +6,12 @@
 
 .login {
   float: left;
-  margin: $login-general-space + 2 $login-general-space +5 0 0;
+  margin: $login-general-space $login-general-space + 20 0 0;
   position: relative;
   z-index: 2;
   a {
+    color: $text-color;
+    font-size: $nav-text;
     &:hover {
       color: $theme-blue;
     }

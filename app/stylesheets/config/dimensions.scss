@@ -5,9 +5,12 @@ $full-width: 100%;
 
 // header
 $dash-title-width-mobile: 60px;
-$header-height: 80px;
+$dash-title-width: 270px;
+$dash-title-top-position: 16px;
+$header-height: 70px;
 $logo-width: 78px;
 $logo-width-mobile: 50px;
+$logo-height: 50px;
 $nav-item-height: 20px;
 $top-nav-vert-pos-mobile: 65px;
 $top-nav-right-mobile: 7px;
@@ -37,7 +40,9 @@ $homecontent-centered: 50%;
 $copy-width-large: 550px;
 $copy-width-med: 450px;
 $divider-height: 6px;
-$footer-height: 70px;
+$footer-height: 50px;
+$footer-logo-height: 30px;
+$footer-logo-margin: 10px;
 
 // charts
 $main-chart-width: 20%;
@@ -71,11 +76,10 @@ $login-window-hposition: -200px;
 $login-general-space: 10px;
 
 // margins and padding
-$logo-top-position: 15px;
+$logo-top-position: 10px;
 $header-common-margin: 20px;
-$nav-top-position: 17px;
+$nav-top-position: 14px;
 $nav-top-position-mobile: 15px;
-$dash-title-top-position: 15px;
 
 $footer-nav-top-position: 35px;
 $footer-text-top-position: 20px;
