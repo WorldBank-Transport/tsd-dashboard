@@ -19,8 +19,8 @@ ul.language-selector {
   @include list-inline();
   @include list-unstyle();
   background: $tab-expand-bg;
-  padding-bottom: $nav-padding;
-  padding-top: $nav-padding;
+  padding-bottom: $nav-padding - 2;
+  padding-top: $nav-padding - 2;
 
   & > li {
     @include up-to($tablet-portrait) {
@@ -31,15 +31,16 @@ ul.language-selector {
     background: $tab-expand-bg;
     border-right: 1px solid $theme-blue;
     height: $nav-item-height;
-    padding-left: $header-common-margin;
-    padding-right: $header-common-margin;
+    padding-left: $header-common-margin - 3;
+    padding-right: $header-common-margin - 3;
 
     &:last-child {
       border: 0;
     }
 
     a {
-      color: inherit;
+      color: $lang-nav-inactive;
+      font-size: $nav-text;
     }
     &.active a,
     a:hover {
