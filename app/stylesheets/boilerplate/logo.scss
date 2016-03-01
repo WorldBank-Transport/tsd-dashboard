@@ -10,6 +10,11 @@
       margin-right: $base-unit;
       width: $logo-width-mobile;
     }
+    @include up-to($phone) {
+      height: $logo-height - 10;
+      margin-top: $logo-top-position + 5;
+      width: auto;
+    }
 
     float: left;
     height: $logo-height;
@@ -18,11 +23,17 @@
     }
 
   h1 {
-    @include up-to($tablet-portrait) {
+    @include up-to($tablet-alt) {
       font-size: $dash-title-mobile;
       line-height: $dash-title-line-height-mobile;
       margin-top: $header-mobile-space;
       width: $dash-title-width-mobile;
+    }
+    @include up-to($phone) {
+      font-size: $dash-title-mobile - 4;
+      line-height: $default-line-height;
+      margin-top: $dash-title-top-position - 1;
+      width: $dash-title-width - 180;
     }
     display: inline-block;
     float: left;

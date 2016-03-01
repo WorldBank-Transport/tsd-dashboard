@@ -15,6 +15,7 @@ ul.language-selector {
   @include up-to($tablet-portrait) {
     top: $header-mobile-space;
   }
+
   @include border-radius(3px);
   @include list-inline();
   @include list-unstyle();
@@ -39,8 +40,12 @@ ul.language-selector {
     }
 
     a {
+      @include up-to($phone) {
+      font-size: $nav-text - 3;
+      }
       color: $lang-nav-inactive;
       font-size: $nav-text;
+
     }
     &.active a,
     a:hover {
