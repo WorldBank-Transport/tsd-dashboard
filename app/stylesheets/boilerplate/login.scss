@@ -5,6 +5,18 @@
 @import '../config/box';
 
 .login {
+  @include up-to($tablet-alt) {
+    float: right;
+    margin-right: $login-general-space + 200;
+  }
+  @include up-to($tablet-portrait) {
+    float: right;
+    margin-right: $login-general-space;
+  }
+   @include up-to($phone) {
+    float: right;
+    margin-right: $login-general-space - 5;
+  }
   float: left;
   margin: $login-general-space $login-general-space + 20 0 0;
   position: relative;

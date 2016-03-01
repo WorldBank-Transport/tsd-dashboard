@@ -17,7 +17,7 @@ const HealthDash = React.createClass({
       return (
         <div className="healthdash">
           <h4><T k="health.metric.title" /></h4>
-          <h2>{this.state.data.ckan.count}</h2>
+          <h2 className="main-stat">{this.state.data.ckan.count}</h2>
           <p>{this.state.data['healthdash.homepage.year']} <T k="home.target" /></p>
           <div className="target-stat">{this.state.data['healthdash.homepage.target']}</div>
         </div>
