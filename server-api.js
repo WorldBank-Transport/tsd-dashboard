@@ -1,4 +1,4 @@
-
+    
 // BASE SETUP
 // =============================================================================
 
@@ -6,11 +6,12 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var phantom    = require('phantom');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
 
 var port = process.env.PORT || 9080;        // set our port
 
@@ -241,6 +242,62 @@ app.get('/share', function(req, res) {
       }
     });
   }
+});
+
+
+callbackDone = function(result) {
+  console.log('html', html);
+};
+
+app.post('/pdf', function(req, res) {
+  phantom.create().then(function(ph) {
+
+    ph.createPage().then(function(page) {
+      page.property('paperSize', {
+        format: 'A3',
+        orientation: 'landscape',
+        margin: '1cm',
+      });
+      page.property('viewportSize', {
+        width: 3000,
+        height: 1000,
+      });
+      //page.setting('localToRemoteUrlAccessEnabled', true);
+      page.setting('javascriptEnabled', true);
+      page.setting('resourceTimeout', 20000);
+      // page.property('onResourceRequested', function(requestData, networkRequest, debug) {
+      //   console.log('requested: ', requestData.url);
+      // }, process.env.DEBUG);
+      // page.property('onResourceReceived', function(requestData, networkRequest, debug) {
+      //   console.log('Received: ', requestData.url);
+      // }, process.env.DEBUG);
+      
+      page.property('content', req.body.content);
+
+      page.evaluate(function() {
+        return document.getElementById('pdf-body').outerHTML;
+      }).then(function(html){
+        setTimeout(function() {
+          // console.log('about to render');
+          var filename = 'tmp/test-' + Date.now() + '.pdf';
+          page.render(filename).then(function(result) {
+            res.download(filename, filename, function(err) {
+              if(err) {
+                console.log('error: ', err);
+              }
+              res.status(200).end();
+            });
+            
+            if(open) {
+              open = false;
+              page.close();
+              ph.exit();
+            }
+          });   
+        }, 10000);
+      });
+    });
+  });
 });
 
 // START THE SERVER
