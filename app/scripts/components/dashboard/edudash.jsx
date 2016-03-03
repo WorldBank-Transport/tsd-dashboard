@@ -17,7 +17,7 @@ const EduDash = React.createClass({
       return (
         <div className="edudash">
           <h4><T k="education.metric.title" /></h4>
-          <h2>{(this.state.data.ckan.avg).toFixed(1)} %</h2>
+          <h2 className="main-stat">{(this.state.data.ckan.avg).toFixed(1)} %</h2>
           <p>{this.state.data['edudash.homepage.year']} <T k="home.target" /></p>
           <div className="target-stat">{this.state.data['edudash.homepage.target']}</div>
         </div>
