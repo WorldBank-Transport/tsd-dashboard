@@ -278,15 +278,19 @@ app.post('/pdf', function(req, res) {
         return document.getElementById('pdf-body').outerHTML;
       }).then(function(html){
         setTimeout(function() {
-          // console.log('about to render');
+          console.log('about to render');
           var filename = 'tmp/test-' + Date.now() + '.pdf';
           page.render(filename).then(function(result) {
             res.download(filename, filename, function(err) {
               if(err) {
                 console.log('error: ', err);
               }
-              page.close();
-              ph.exit();
+              try {
+                page.close();
+                ph.exit();
+              } catch(phErr) {
+                console.log('error: ', phErr);
+              }
               res.status(200).end();
             });
           });  
