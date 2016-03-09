@@ -285,12 +285,11 @@ app.post('/pdf', function(req, res) {
               if(err) {
                 console.log('error: ', err);
               }
+              page.close();
+              ph.exit();
               res.status(200).end();
             });
-            
-            page.close();
-            ph.exit();
-          });   
+          });  
         }, 10000);
       });
     });
