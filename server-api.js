@@ -258,10 +258,10 @@ app.post('/pdf', function(req, res) {
         orientation: 'landscape',
         margin: '1cm',
       });
-      // page.property('viewportSize', {
-      //   width: 3000,
-      //   height: 1000,
-      // });
+      page.property('viewportSize', {
+         width: 3000,
+         height: 1000,
+      });
       //page.setting('localToRemoteUrlAccessEnabled', true);
       page.setting('javascriptEnabled', true);
       page.setting('resourceTimeout', 20000);
@@ -286,6 +286,7 @@ app.post('/pdf', function(req, res) {
                 console.log('error: ', err);
               }
               try {
+                console.log('closing');
                 page.close();
                 ph.exit();
               } catch(phErr) {
