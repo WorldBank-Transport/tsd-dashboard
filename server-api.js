@@ -288,11 +288,8 @@ app.post('/pdf', function(req, res) {
               res.status(200).end();
             });
             
-            if(open) {
-              open = false;
-              page.close();
-              ph.exit();
-            }
+            page.close();
+            ph.exit();
           });   
         }, 10000);
       });
