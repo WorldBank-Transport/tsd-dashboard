@@ -91,7 +91,7 @@
     "leaflet": "0.7.5",
     "lodash": "3.10.1",
     "nedb": "^1.7.1",
-    "phantom": "2.0.3",
+    "phantom": "2.0.10",
     "object-assign": "4.0.1",
     "react": "0.13.3",
     "react-d3-components": "0.5.2",
